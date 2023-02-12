@@ -30,16 +30,12 @@ async function msgHandler(msg) {
   if (typeof msg.text !== 'string' || ((msg.chat.type === 'group' || msg.chat.type === 'supergroup') && !msg.text.startsWith(prefix))) {
     return;
   }
-  switch (true) {
-    case msg.text.startsWith('/start'):
-      await bot.sendMessage(msg.chat.id, '👋你好！很高兴能与您交谈。有什么我可以帮您的吗？');
-      break;
-    case msg.text.length >= 2:
-      await chatGpt(msg);
-      break;
-    default:
-      await bot.sendMessage(msg.chat.id, '😭我不太明白您的意思。');
-      break;
+  if(msg.text.startsWith('/start')){
+    await bot.sendMessage(msg.chat.id, '👋你好！很高兴能与您交谈。有什么我可以帮您的吗？');
+  }else if(msg.text.startsWith('prefix')){
+    await chatGpt(msg);
+  }else{
+    await bot.sendMessage(msg.chat.id, '😭我不太明白您的意思。');
   }
 }
 
