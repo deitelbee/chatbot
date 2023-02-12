@@ -32,7 +32,7 @@ async function msgHandler(msg) {
   }
   if(msg.text.startsWith('/start')){
     await bot.sendMessage(msg.chat.id, '👋你好！很高兴能与您交谈。有什么我可以帮您的吗？');
-  }else if(msg.text.startsWith('prefix')){
+  }else if(msg.text.startsWith(prefix)){
     await chatGpt(msg);
   }else{
     await bot.sendMessage(msg.chat.id, '😭我不太明白您的意思。');
